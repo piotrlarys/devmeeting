@@ -1,5 +1,6 @@
 import { Product } from './product/product.model';
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  myInput = new FormControl();
+
+  constructor() {
+    this.myInput.valueChanges.subscribe(value => {
+      this.promotedProducts.filter(filterValue => {
+        const regex = new RegExp(value);
+        return regex.test(filterValue.name) || regex.test('' + filterValue.price);
+      });
+    });
+  }
 
 promotedProducts: Product[] = [
     {
@@ -57,7 +68,6 @@ promotedProducts: Product[] = [
         name: 'pie'
       }]
     },
-    ,
     {
       name: 'Watermelon',
       price: 4.25,
