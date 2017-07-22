@@ -2,9 +2,7 @@
   <span>Name: {{product.name}}</span><br>
   <span>Price: $ {{product.price}}</span><br>
     Tags:
-    <ul>
-      <li *ngFor="let tag of product.tags"><button class="btn btn-success">{{tag.name}}</button></li>
-    </ul>
+      <button class="btn btn-success" *ngFor="let tag of product.tags">{{tag.name}}</button>
 </div>
 
 
