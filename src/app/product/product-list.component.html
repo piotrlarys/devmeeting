@@ -4,7 +4,7 @@
     <div  class='cursor-pointer' *ngFor="let product of products">
       <div><span>Name: {{product.name}}</span><br></div>
       <div><span>Price: $ {{product.price}}</span><br></div>
-      <div *ngFor="let tag of product.tags"><button class="btn btn-success">{{tag.name}}</button></div>
+      <button class="btn btn-success" *ngFor="let tag of product.tags">{{tag.name}}</button>
     </div>
   </div>
 </div>
