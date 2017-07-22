@@ -27,11 +27,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  sortByName(){
-
+  sortByName() {
+    this.products = this.productRepository.sortByName();
   }
 
-  sortByPrice(){
-
+  sortByPrice() {
+    this.products = this.productRepository.sortByPrice();
   }
 }

@@ -90,4 +90,24 @@ export class ProductRepositoryService {
         }).length;
     });
   }
+
+  sortByPrice() {
+    return this.products.sort(this.sortFunctionByName);
+  }
+
+  sortByName() {
+    return this.products.sort(this.sortFunctionByPrice);
+  }
+
+  private sortFunctionByName(a, b) {
+    return b.name < a.name ?  1 // if b should come earlier, push a to end
+         : b.name > a.name ? -1 // if b should come later, push a to begin
+         : 0;
+  }
+
+  private sortFunctionByPrice(a, b) {
+    return b.price < a.price ?  1 // if b should come earlier, push a to end
+         : b.price > a.price ? -1 // if b should come later, push a to begin
+         : 0;
+  }
 }
