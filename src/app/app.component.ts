@@ -26,4 +26,12 @@ export class AppComponent implements OnInit {
       this.promotedProducts = this.productRepository.filterPromotedProducts(value);
     });
   }
+
+  sortByName(){
+
+  }
+
+  sortByPrice(){
+
+  }
 }
