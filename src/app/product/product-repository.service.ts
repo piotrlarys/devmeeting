@@ -74,15 +74,11 @@ export class ProductRepositoryService {
   }
 
   filterProducts(value: string) {
-    let value2: string = value;
-    value2 = value2.toLowerCase();
-    return this.filterByValue(this.getProducts(), value2);
+    return this.filterByValue(this.getProducts(), value.toLowerCase());
   }
 
   filterPromotedProducts(value: string) {
-    let value2: string = value;
-    value2 = value2.toLowerCase();
-    return this.filterByValue(this.getPromotedProducts(), value2);
+    return this.filterByValue(this.getPromotedProducts(), value.toLowerCase());
   }
 
   private filterByValue(prod: Product[], value: string) {
