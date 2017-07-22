@@ -1,5 +1,5 @@
 import { Product } from './product.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-list',
@@ -8,24 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [
-    {
-      name: 'Apple',
-      price: 2.2,
-      promoted: true,
-      tags: [{
-        name: 'apple'
-      }]
-    },
-        {
-      name: 'Orange',
-      price: 1,
-      promoted: true,
-      tags: [{
-        name: 'orange'
-      }]
-    }
-  ];
+  @Input() listType: string;
+  @Input() products: Product[];
 
   constructor() { }
 
