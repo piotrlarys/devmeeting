@@ -13,8 +13,15 @@ export class AppComponent {
 
   constructor() {
     this.myInput.valueChanges.subscribe(value => {
-      this.promotedProducts.filter(filterValue => {
-        return filterValue.name.includes(value) || filterValue.price.toString().includes(value);
+      let value2: string = value;
+      value2 = value2.toLocaleLowerCase();
+      this.filteredProducts = this.products.filter(filterValue => {
+        return filterValue.name.toLocaleLowerCase().includes(value) ||
+        filterValue.price.toString().includes(value);
+      });
+      this.filteredPromotedProducts = this.promotedProducts.filter(filterValue => {
+        return filterValue.name.toLocaleLowerCase().includes(value) ||
+        filterValue.price.toString().includes(value);
       });
     });
   }
@@ -76,4 +83,7 @@ promotedProducts: Product[] = [
       }]
     }
   ];
+
+  filteredProducts: Product[] = this.products;
+  filteredPromotedProducts: Product[] = this.promotedProducts;
 }
