@@ -1,3 +1,11 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+li {
+  list-style-type: none;
+}
+
+.product-list {
+  margin-left: 20px;
+}

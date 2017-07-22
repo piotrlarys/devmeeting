@@ -1,11 +1,11 @@
+<div class="product-list">
+  <h3>{{listType}} List</h3>
+  <ul>
+    <li class='cursor-pointer' *ngFor="let prod of products" (click)="product=prod">{{prod.name}}</li>
+  </ul>
 
-<div>{{listType}} List</div>
-<ul>
-  <li class='cursor-pointer' *ngFor="let prod of products" (click)="product=prod">{{prod.name}}</li>
-</ul>
-
-
-<div>Product details:</div>
-<div *ngIf="product">
-  <app-product [product]='product'></app-product>
+  <div *ngIf="product">
+  <h4>Product details:</h4>
+    <app-product [product]='product'></app-product>
+  </div>
 </div>
