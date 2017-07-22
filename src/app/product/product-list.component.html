@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let prod of products" (click)="product=prod">{{prod.name}}</li>
+  <li class='cursor-pointer' *ngFor="let prod of products" (click)="product=prod">{{prod.name}}</li>
 </ul>
 
 <div *ngIf="product">
