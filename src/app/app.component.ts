@@ -14,14 +14,20 @@ export class AppComponent {
   constructor() {
     this.myInput.valueChanges.subscribe(value => {
       let value2: string = value;
-      value2 = value2.toLocaleLowerCase();
+      value2 = value2.toLowerCase();
       this.filteredProducts = this.products.filter(filterValue => {
-        return filterValue.name.toLocaleLowerCase().includes(value) ||
-        filterValue.price.toString().includes(value);
+        return filterValue.name.toLowerCase().includes(value2) ||
+        filterValue.price.toString().includes(value2) ||
+        filterValue.tags.filter(filterTagValue => {
+          return filterTagValue.name.toLowerCase().includes(value2);
+        }).length;
       });
       this.filteredPromotedProducts = this.promotedProducts.filter(filterValue => {
-        return filterValue.name.toLocaleLowerCase().includes(value) ||
-        filterValue.price.toString().includes(value);
+        return filterValue.name.toLowerCase().includes(value2) ||
+        filterValue.price.toString().includes(value2) ||
+        filterValue.tags.filter(filterTagValue => {
+          return filterTagValue.name.toLowerCase().includes(value2);
+        }).length;
       });
     });
   }
