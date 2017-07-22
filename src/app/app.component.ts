@@ -14,8 +14,7 @@ export class AppComponent {
   constructor() {
     this.myInput.valueChanges.subscribe(value => {
       this.promotedProducts.filter(filterValue => {
-        const regex = new RegExp(value);
-        return regex.test(filterValue.name) || regex.test('' + filterValue.price);
+        return filterValue.name.includes(value) || filterValue.price.toString().includes(value);
       });
     });
   }
