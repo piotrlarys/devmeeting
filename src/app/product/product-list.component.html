@@ -1,11 +1,10 @@
 <div class="product-list">
   <h3>{{listType}} List</h3>
-  <ul>
-    <li class='cursor-pointer' *ngFor="let prod of products" (click)="product=prod">{{prod.name}}</li>
-  </ul>
-
-  <div *ngIf="product">
-  <h4>Product details:</h4>
-    <app-product [product]='product'></app-product>
+  <div class="product-info">
+    <div  class='cursor-pointer' *ngFor="let product of products">
+      <div><span>Name: {{product.name}}</span><br></div>
+      <div><span>Price: $ {{product.price}}</span><br></div>
+      <div *ngFor="let tag of product.tags"><button class="btn btn-success">{{tag.name}}</button></div>
+    </div>
   </div>
 </div>
