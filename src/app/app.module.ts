@@ -1,3 +1,4 @@
+import { ProductRepositoryService } from './product/product-repository.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ProductRepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

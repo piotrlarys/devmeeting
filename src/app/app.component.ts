@@ -1,5 +1,6 @@
+import { ProductRepositoryService } from './product/product-repository.service';
 import { Product } from './product/product.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,89 +8,27 @@ import { FormControl } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   myInput = new FormControl();
+  products: Product[];
+  filteredProducts: Product[];
+  filteredPromotedProducts: Product[];
+  promotedProducts: Product[];
 
-  constructor() {
+  constructor(private productRepository: ProductRepositoryService) {
+  }
+
+  ngOnInit(): void {
+    this.filteredProducts = this.productRepository.getProducts();
+    this.products = this.productRepository.getProducts();
+    this.filteredPromotedProducts = this.productRepository.getPromotedProducts();
+    this.promotedProducts = this.productRepository.getPromotedProducts();
+
     this.myInput.valueChanges.subscribe(value => {
-      let value2: string = value;
-      value2 = value2.toLowerCase();
-      this.filteredProducts = this.products.filter(filterValue => {
-        return filterValue.name.toLowerCase().includes(value2) ||
-        filterValue.price.toString().includes(value2) ||
-        filterValue.tags.filter(filterTagValue => {
-          return filterTagValue.name.toLowerCase().includes(value2);
-        }).length;
-      });
-      this.filteredPromotedProducts = this.promotedProducts.filter(filterValue => {
-        return filterValue.name.toLowerCase().includes(value2) ||
-        filterValue.price.toString().includes(value2) ||
-        filterValue.tags.filter(filterTagValue => {
-          return filterTagValue.name.toLowerCase().includes(value2);
-        }).length;
-      });
+      this.filteredProducts = this.productRepository.filterProducts(value);
+      this.filteredPromotedProducts = this.productRepository.filterPromotedProducts(value);
     });
   }
 
-promotedProducts: Product[] = [
-    {
-      name: 'Apple',
-      price: 2.4,
-      promoted: true,
-      tags: [{
-        name: 'apple'
-      },
-      {
-        name: 'steve'
-      }]
-    },
-    {
-      name: 'Blueberry',
-      price: 5.2,
-      promoted: true,
-      tags: [{
-        name: 'blueberry'
-      },
-      {
-        name: 'the best'
-      }]
-    },
-  ];
-
-  products: Product[] = [
-    {
-      name: 'Orange',
-      price: 1.34,
-      promoted: true,
-      tags: [{
-        name: 'orange'
-      },
-      {
-        name: 'annoing'
-      },
-      {
-        name: 'phone'
-      }]
-    },
-    {
-      name: 'Banana',
-      price: 0.65,
-      promoted: true,
-      tags: [{
-        name: 'pie'
-      }]
-    },
-    {
-      name: 'Watermelon',
-      price: 4.25,
-      promoted: true,
-      tags: [{
-        name: 'water'
-      }]
-    }
-  ];
-
-  filteredProducts: Product[] = this.products;
-  filteredPromotedProducts: Product[] = this.promotedProducts;
 }
