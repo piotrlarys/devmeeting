@@ -92,11 +92,11 @@ export class ProductRepositoryService {
   }
 
   sortByPrice() {
-    return this.products.sort(this.sortFunctionByName);
+    return this.products.sort(this.sortFunctionByPrice);
   }
 
   sortByName() {
-    return this.products.sort(this.sortFunctionByPrice);
+    return this.products.sort(this.sortFunctionByName);
   }
 
   private sortFunctionByName(a, b) {
@@ -106,8 +106,8 @@ export class ProductRepositoryService {
   }
 
   private sortFunctionByPrice(a, b) {
-    return b.price < a.price ?  1 // if b should come earlier, push a to end
-         : b.price > a.price ? -1 // if b should come later, push a to begin
+    return parseFloat(b.price) > parseFloat(a.price) ?  1 // if b should come earlier, push a to end
+         : parseFloat(b.price) < parseFloat(a.price) ? -1 // if b should come later, push a to begin
          : 0;
   }
 }
