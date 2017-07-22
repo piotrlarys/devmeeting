@@ -1,5 +1,5 @@
 # DevShop 
-http://kapke.github.io/angular2-shop/program-devmeeting/
+# http://kapke.github.io/angular2-shop/program-devmeeting/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.3.
 
