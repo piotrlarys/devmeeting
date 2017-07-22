@@ -11,11 +11,19 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [
     {
       name: 'Apple',
-      price: 2.2
+      price: 2.2,
+      promoted: true,
+      tags: [{
+        name: 'apple'
+      }]
     },
         {
       name: 'Orange',
-      price: 1
+      price: 1,
+      promoted: true,
+      tags: [{
+        name: 'orange'
+      }]
     }
   ];
 

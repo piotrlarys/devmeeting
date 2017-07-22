@@ -1,7 +1,12 @@
 <div>
-  {{product.name}}
+  name: {{product.name}}
 </div>
 
 <div>
-  {{product.price}}
+  price: {{product.price}}
 </div>
+
+<div>tags: </div> 
+<ul>
+  <li *ngFot="let tag of tags">{{tag.name}}</li>
+</ul>

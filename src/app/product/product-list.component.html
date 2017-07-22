@@ -1,7 +1,9 @@
+<div>Product list:</div>
 <ul>
   <li class='cursor-pointer' *ngFor="let prod of products" (click)="product=prod">{{prod.name}}</li>
 </ul>
 
+<div>Product details:</div>
 <div *ngIf="product">
   <app-product [product]='product'></app-product>
 </div>
