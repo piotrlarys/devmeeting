@@ -1,5 +1,9 @@
-<input type="search" [formControl]="myInput">
-<button class="btn btn-default" (click)="sortByName()">Sort by name</button>
-<button class="btn btn-default" (click)="sortByPrice()">Sort by price</button>
-<app-product-list [listType]="'Promoted'" [products]='products'></app-product-list>
-<app-product-list [listType]="'Normal'" [products]='promotedProducts'></app-product-list>
+<div class="row" style="margin-top:50px">
+    <div class="col s10 offset-s1">
+        <input type="search" [formControl]="myInput">
+        <button class="btn btn-default" (click)="sortByName()">Sort by name</button>
+        <button class="btn btn-default" (click)="sortByPrice()">Sort by price</button>
+        <app-product-list [listType]="'Promoted'" [products]='products'></app-product-list>
+        <app-product-list [listType]="'Normal'" [products]='promotedProducts'></app-product-list>
+    </div>
+</div>
